@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627ef47f55a64f340879c98366310a5a, type: 3}
+  m_Name: RickRoll
+  m_EditorClassIdentifier: 
+  videoID: rick
+  title: Only for bad customers
+  preview: {fileID: 21300000, guid: b4e90d65d3757e9418221932869d8fcd, type: 3}
+  tags:
+  - trolling
+  - torture
+  clip: {fileID: 32900000, guid: 36cdf3c14d9177c46a7340cbf9c314c9, type: 3}
