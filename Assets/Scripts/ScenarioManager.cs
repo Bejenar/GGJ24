@@ -41,6 +41,8 @@ public class ScenarioManager : MonoBehaviour
 
     public AudioClip clip;
 
+    public RectTransform panelRect;
+
     private void Start()
     {
         _musicManager = FindObjectOfType<MusicManager>();
@@ -51,17 +53,18 @@ public class ScenarioManager : MonoBehaviour
         Debug.Log(scenarioLines.Length);
     }
 
-    void Update()
+    public void TryClick()
     {
-        // Check for left mouse click
-        if (Input.GetMouseButtonDown(0))
+        // Parse next command when clicked
+        if (currentIndex < scenarioLines.Length)
         {
-            // Parse next command when clicked
-            if (currentIndex < scenarioLines.Length)
-            {
-                ParseNextCommand();
-            }
+            ParseNextCommand();
         }
+    }
+
+    private bool IsPointerOverPanel(RectTransform rectTransform)
+    {
+        return RectTransformUtility.RectangleContainsScreenPoint(rectTransform, Input.mousePosition, null);
     }
 
     private IEnumerator PlaySpriteAnimation(AnimationCurve curve)
@@ -215,12 +218,15 @@ public class ScenarioManager : MonoBehaviour
 
     void StartGameplay(CharacterData characterData)
     {
-        hint.text = lastTextLine.Replace("(", "").Replace(")", "");;
-        
+        hint.text = lastTextLine.Replace("(", "").Replace(")", "");
+        ;
+
         if (characterData.characterName == "???")
+
         {
             secretButton.SetActive(true);
         }
+
         canMove = false;
         Debug.Log("Start gameplay");
         _musicManager.TogglePause();
@@ -258,8 +264,9 @@ public class ScenarioManager : MonoBehaviour
         {
             _scoreManager.AddScore(characterData.favMemesMap[selectedVideo.videoID]);
         }
+
         servedCustomers.Add(characterData.characterName);
-        
+
         lastFeedback = goodResult;
         string feedbackText = goodResult ? positiveFeedback : negativeFeedback;
         // Display feedback text
