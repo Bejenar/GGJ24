@@ -215,7 +215,7 @@ public class ScenarioManager : MonoBehaviour
 
     void StartGameplay(CharacterData characterData)
     {
-        hint.text = lastTextLine;
+        hint.text = lastTextLine.Replace("(", "").Replace(")", "");;
         
         if (characterData.characterName == "???")
         {
